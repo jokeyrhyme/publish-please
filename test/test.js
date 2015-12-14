@@ -56,7 +56,8 @@ describe('.publishrc', function () {
             sensitiveDataAudit: false,
             prepublishScript:   'npm test',
             checkUncommitted:   true,
-            checkUntracked:     true
+            checkUntracked:     true,
+            scopeAccess:        'public'
         }));
 
         var opts = getOptions({
@@ -70,6 +71,7 @@ describe('.publishrc', function () {
         assert(!opts.checkUncommitted);
         assert(!opts.checkUntracked);
         assert.strictEqual(opts.validateBranch, 'master');
+        assert.strictEqual(opts.scopeAccess, 'public');
     });
 
     it('Should expect .publishrc to be a valid JSON file', function () {

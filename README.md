@@ -65,6 +65,7 @@ gulp.task('publish', ['test'], () => publish(options));
  - **validateBranch** - Check that current branch matches the specified branch. Default: `master`.
  - **tag** - Specifies tag with which package will be published. See [npm publish docs](https://docs.npmjs.com/cli/publish) for more info. Default: `latest`.
  - **prepublishScript** - Specifies command that will be run before publish (e.g. `npm test`). Use it for builds and tests. Default: `null`.
+ - **scopeAccess** - Tells the registry whether this package should be published as public or restricted. Only applies to scoped packages. See [npm publish docs](https://docs.npmjs.com/cli/publish) for more info. Default: "restricted" for scoped packages, "public" for un-scoped packages.
 
 ## .publishrc file
 You can specify publish options in the JSON form via `.publishrc` file in your project directory. E.g.:
@@ -73,7 +74,8 @@ You can specify publish options in the JSON form via `.publishrc` file in your p
     "validateGitTag":   false,
     "validateBranch":   "master",
     "tag":              "beta",
-    "prepublishScript": "mocha"
+    "prepublishScript": "mocha",
+    "scopeAccess":      "restricted"
 }
 ```
 
